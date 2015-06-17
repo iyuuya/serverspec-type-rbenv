@@ -22,6 +22,10 @@ module Serverspec::Type
       @runner.run_command("#{pre_command}; rbenv global").stdout.strip == version
     end
 
+    def has_plugin?(plugin_name)
+      @runner.check_file_is_directory("#{@rbenv_root_path}/plugins/#{plugin_name}")
+    end
+
     private
 
     def pre_command

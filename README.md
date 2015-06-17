@@ -28,7 +28,7 @@ describe rbenv('/home/vagrant/.rbenv', 'vagrant') do
   it { should have_ruby_version '2.1.1' }
   it { should have_global_ruby_version '2.1.1' }
 
-  # it { should have_plugin 'ruby-build' }
+  it { should have_plugin 'ruby-build' }
 end
 ```
 
