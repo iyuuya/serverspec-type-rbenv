@@ -5,12 +5,16 @@ module Serverspec::Type
     def initialize(rbenv_root_path=nil, rbenv_user=nil)
       @name   = 'rbenv'
       @rbenv_root_path = rbenv_root_path
-      @rbenv_user = rbenv_user
+      @rbenv_user = rbenv_user || 'root'
       @runner = Specinfra::Runner
     end
 
     def installed?(provider=nil, version=nil)
       @runner.run_command("#{pre_command}; type rbenv").exit_status == 0
+    end
+
+    def configured?
+      @runner.run_command("su -l #{@rbenv_user} -c rbenv") == 0
     end
 
     def has_ruby_version?(version)

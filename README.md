@@ -23,6 +23,7 @@ This is a imaginary code :-)
 ```ruby
 describe rbenv('/home/vagrant/.rbenv', 'vagrant') do
   it { should be_installed }
+  it { should be_configured }
 
   it { should have_ruby_version '1.9.3-p545' }
   it { should have_ruby_version '2.1.1' }
